@@ -1,0 +1,33 @@
+{
+  "version": "1.0",
+  "categories": {
+    "RED": { "priority": 1, "maxWaitMinutes": 15, "label": "Emergency" },
+    "AMBER": { "priority": 2, "maxWaitMinutes": 60, "label": "Urgent" },
+    "GREEN": { "priority": 3, "maxWaitMinutes": 240, "label": "Routine" }
+  },
+  "symptoms": {
+    "chest_pain": { "category": "RED", "specialty": "cardiology", "icon": "heart-alert" },
+    "breathlessness": { "category": "RED", "specialty": "pulmonology", "icon": "lungs" },
+    "severe_bleeding": { "category": "RED", "specialty": "emergency", "icon": "blood" },
+    "unconsciousness": { "category": "RED", "specialty": "emergency", "icon": "alert" },
+    "pregnancy_complication": { "category": "RED", "specialty": "obgyn", "icon": "pregnant" },
+    "high_fever": { "category": "AMBER", "specialty": "general", "icon": "thermometer", "vitalsThreshold": { "temperature_c": 39 } },
+    "persistent_vomiting": { "category": "AMBER", "specialty": "general", "icon": "stomach" },
+    "injury": { "category": "AMBER", "specialty": "orthopedics", "icon": "bandage" },
+    "fever": { "category": "GREEN", "specialty": "general", "icon": "thermometer" },
+    "headache": { "category": "GREEN", "specialty": "general", "icon": "head" },
+    "cough": { "category": "GREEN", "specialty": "general", "icon": "cough" },
+    "skin_rash": { "category": "GREEN", "specialty": "dermatology", "icon": "skin" }
+  },
+  "vitalsEscalation": {
+    "heart_rate": { "min": 120, "escalateTo": "AMBER" },
+    "heart_rate_critical": { "min": 150, "escalateTo": "RED" },
+    "spo2": { "max": 92, "escalateTo": "RED" },
+    "systolic_bp": { "min": 180, "escalateTo": "RED" },
+    "temperature_c": { "min": 40, "escalateTo": "RED" }
+  },
+  "educationTopics": {
+    "chest_pain": { "en": "Chest pain can indicate a heart attack. Seek immediate care.", "hi": "सीने में दर्द दिल के दौरे का संकेत हो सकता है। तुरंत उपचार लें।" },
+    "fever": { "en": "Rest, hydrate, and monitor temperature every 4 hours.", "hi": "आराम करें, पानी पिएं, और हर 4 घंटे में तापमान जांचें।" }
+  }
+}
