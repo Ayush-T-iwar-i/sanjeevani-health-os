@@ -1,0 +1,16 @@
+{
+  "expo": {
+    "name": "Sanjeevani Health OS",
+    "slug": "sanjeevani-health-os",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "android": {
+      "package": "com.sanjeevani.healthos",
+      "permissions": ["ACCESS_FINE_LOCATION", "RECORD_AUDIO", "CAMERA"]
+    },
+    "ios": {
+      "bundleIdentifier": "com.sanjeevani.healthos"
+    }
+  }
+}

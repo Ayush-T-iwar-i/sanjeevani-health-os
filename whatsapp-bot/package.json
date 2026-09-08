@@ -1,0 +1,14 @@
+{
+  "name": "sanjeevani-whatsapp-bot",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "body-parser": "^1.20.2",
+    "axios": "^1.7.2"
+  }
+}
