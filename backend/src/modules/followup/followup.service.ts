@@ -40,6 +40,19 @@ export async function listFollowupsForPatient(patientId: string): Promise<Follow
   return rows;
 }
 
+export async function listHighRiskPatients(facilityId: string) {
+  const { rows } = await query(
+    `SELECT p.patient_id, u.name, u.phone, p.is_high_risk,
+            (SELECT COUNT(*) FROM followups f WHERE f.patient_id = p.patient_id AND f.status = 'missed') AS missed_followups
+     FROM patients p
+     JOIN users u ON u.user_id = p.user_id
+     WHERE p.is_high_risk = TRUE AND u.facility_id = $1
+     ORDER BY missed_followups DESC`,
+    [facilityId]
+  );
+  return rows;
+}
+
 /**
  * Run daily (via a scheduled job, same pattern as noShowWatcher.job.ts).
  * Any pending followup past due gets missed_count incremented; after 2 misses,

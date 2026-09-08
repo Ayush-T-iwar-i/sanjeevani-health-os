@@ -6,6 +6,7 @@ const router = Router();
 
 // POST /api/followups/enroll   { patientId, pathwayType: 'maternal'|'child'|'chronic', condition? }
 router.post('/enroll', authMiddleware, controller.postEnroll);
+router.get('/high-risk', authMiddleware, controller.getHighRisk);
 router.get('/patient/:patientId', authMiddleware, controller.getForPatient);
 router.post('/:id/complete', authMiddleware, controller.postComplete);
 

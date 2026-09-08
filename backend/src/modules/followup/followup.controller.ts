@@ -4,6 +4,13 @@ import { enrollMaternalCare } from './carePathways/maternalCare.pathway';
 import { enrollChildHealth } from './carePathways/childHealth.pathway';
 import { enrollChronicDisease } from './carePathways/chronicDisease.pathway';
 
+export async function getHighRisk(req: Request, res: Response) {
+  const facilityId = req.query.facility_id as string;
+  if (!facilityId) return res.status(400).json({ error: 'facility_id query param is required' });
+  const patients = await followupService.listHighRiskPatients(facilityId);
+  return res.status(200).json({ patients });
+}
+
 export async function postEnroll(req: Request, res: Response) {
   try {
     const { patientId, pathwayType } = req.body;

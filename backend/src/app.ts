@@ -10,6 +10,12 @@ import triageRoutes from './modules/triage/triage.routes';
 import appointmentRoutes from './modules/appointments/appointment.routes';
 import consultationRoutes from './modules/consultations/consultation.routes';
 import facilityRoutes from './modules/facilities/facility.routes';
+import referralRoutes from './modules/referrals/referral.routes';
+import inventoryRoutes from './modules/inventory/inventory.routes';
+import followupRoutes from './modules/followup/followup.routes';
+import syncRoutes from './sync/sync.routes';
+import emergencyRoutes from './modules/emergency/emergency.routes';
+import analyticsRoutes from './modules/analytics/analytics.routes';
 
 export function createApp() {
   const app = express();
@@ -30,6 +36,12 @@ export function createApp() {
   app.use('/api/appointments', appointmentRoutes);
   app.use('/api/consultations', consultationRoutes);
   app.use('/api/facilities', facilityRoutes);
+  app.use('/api/referrals', referralRoutes);
+  app.use('/api/inventory', inventoryRoutes);
+  app.use('/api/followups', followupRoutes);
+  app.use('/api/sync', syncRoutes);
+  app.use('/api/emergency', emergencyRoutes);
+  app.use('/api/analytics', analyticsRoutes);
 
   app.use((_req, res) => {
     res.status(404).json({ error: 'Not found' });
