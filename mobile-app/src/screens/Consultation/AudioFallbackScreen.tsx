@@ -20,7 +20,9 @@ export default function AudioFallbackScreen({ route, navigation }: any) {
       // simplified here since the RTCPeerConnection was already downgraded
       // by VideoCallScreen before navigating here.
     })();
-    return () => socket?.disconnect();
+    return () => {
+      socket?.disconnect();
+    };
   }, []);
 
   return (

@@ -65,7 +65,7 @@ function assessWithRules(input: TriageInput): Omit<TriageResult, 'encounterId' |
       confidence = 0.95;
       break;
     }
-    if (rule.category === 'AMBER' && category !== 'RED') {
+    if (rule.category === 'AMBER') {
       category = 'AMBER';
       specialty = rule.specialty;
       confidence = 0.85;

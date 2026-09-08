@@ -1,9 +1,12 @@
+import { randomInt } from 'crypto';
 import { env } from '../../config/env';
 import { logger } from '../../config/logger';
 import { storeOtp } from '../../gateway/rateLimiter';
 
 function generateOtp(): string {
-  return Math.floor(100000 + Math.random() * 900000).toString();
+  // crypto.randomInt is CSPRNG-backed; Math.random() is predictable and
+  // unsafe for anything security-sensitive like login OTPs.
+  return randomInt(100000, 1000000).toString();
 }
 
 export async function sendOtp(phone: string): Promise<{ sent: boolean; otp?: string }> {

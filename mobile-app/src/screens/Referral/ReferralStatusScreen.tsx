@@ -32,7 +32,9 @@ export default function ReferralStatusScreen({ route }: any) {
         if (payload.referralId === referralId) setStatus(payload.status);
       });
     })();
-    return () => socket?.disconnect();
+    return () => {
+      socket?.disconnect();
+    };
   }, [referralId]);
 
   if (loading) return <ActivityIndicator style={{ marginTop: 40 }} size="large" />;

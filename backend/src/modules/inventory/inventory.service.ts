@@ -23,7 +23,13 @@ export async function upsertInventoryItem(input: UpsertInventoryInput & { itemTy
     `INSERT INTO facility_inventory
        (inventory_id, facility_id, item_code, item_name, batch_number, quantity_available, expiry_date, item_type, updated_at)
      VALUES (uuid_generate_v4(), $1, $2, $3, $4, $5, $6, $7, NOW())
-     ON CONFLICT (inventory_id) DO NOTHING
+     ON CONFLICT (facility_id, item_code, COALESCE(batch_number, ''))
+     DO UPDATE SET
+       item_name = EXCLUDED.item_name,
+       quantity_available = facility_inventory.quantity_available + EXCLUDED.quantity_available,
+       expiry_date = EXCLUDED.expiry_date,
+       item_type = EXCLUDED.item_type,
+       updated_at = NOW()
      RETURNING *`,
     [facilityId, itemCode, itemName, batchNumber ?? null, quantityAvailable, expiryDate ?? null, itemType]
   );

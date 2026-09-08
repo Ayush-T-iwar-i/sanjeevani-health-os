@@ -45,7 +45,7 @@ async function handleSymptomCheckFlow(session, text) {
 
         return {
           message:
-            `Triage result: ${data.category}\n${data.recommendedAction}\n\n` +
+            `Triage result: ${data.category}\n${data.advice}\n\n` +
             `Reply "2" to book an appointment, or "menu" to start over.`,
           done: data.category !== 'RED', // RED stays "open" so a human can follow up if needed
         };
